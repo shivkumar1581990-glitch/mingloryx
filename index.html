@@ -28,9 +28,9 @@
     .section{padding:54px 0 72px}.section-head{text-align:center;max-width:650px;margin:0 auto 30px}.section-head h2{font-size:2.15rem;margin:0 0 12px;letter-spacing:-.04em}.section-head p{color:var(--muted);line-height:1.6}
     .features{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.card{padding:24px;border-radius:22px;background:linear-gradient(145deg,#ffffff12,#ffffff06);border:1px solid #ffffff17;min-height:180px}.icon{font-size:1.7rem}.card h3{margin:16px 0 8px}.card p{margin:0;color:var(--muted);line-height:1.6;font-size:.94rem}
     .people{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.person{padding:22px;border-radius:20px;background:#ffffff0b;border:1px solid #ffffff19}.avatar{width:52px;height:52px;border-radius:16px;display:grid;place-items:center;font-size:1.35rem;background:linear-gradient(135deg,#ff70bd,#786eff)}.person h3{margin:14px 0 4px}.person p{color:var(--muted);font-size:.9rem;margin:0 0 14px}.tag{display:inline-block;padding:6px 10px;border-radius:999px;background:#ffffff12;color:#dedaf8;font-size:.78rem;margin:3px 4px 0 0}
-    .safety{margin:10px 0 70px;padding:22px 25px;border:1px solid #7edfc044;background:#62d6b00c;border-radius:18px;color:#d9f7ed;line-height:1.6}.safety strong{color:#8df0cf}
+    .explore-tools{display:grid;grid-template-columns:1fr 220px;gap:12px;max-width:720px;margin:0 auto 22px}.explore-tools input,.explore-tools select{width:100%;padding:14px 16px;border-radius:14px;border:1px solid #ffffff2b;background:#17172b;color:#f8f7ff;font:inherit;outline:none}.explore-tools input:focus,.explore-tools select:focus{border-color:var(--purple);box-shadow:0 0 0 3px #9875ff22}.empty{display:none;text-align:center;color:var(--muted);padding:22px;border:1px dashed #ffffff30;border-radius:16px}.preview-note{text-align:center;color:#9998b2;font-size:.82rem;margin:18px 0 0}\n    .safety{margin:10px 0 70px;padding:22px 25px;border:1px solid #7edfc044;background:#62d6b00c;border-radius:18px;color:#d9f7ed;line-height:1.6}.safety strong{color:#8df0cf}
     footer{border-top:1px solid #ffffff18;padding:25px 0 35px;color:#9291aa;font-size:.85rem;display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap}
-    @media(max-width:760px){nav{display:none}.hero{grid-template-columns:1fr;padding:65px 0 35px;gap:15px}.visual{min-height:330px}.features,.people{grid-template-columns:1fr}.f1{left:0}.f2{right:0}h1{font-size:3.5rem}.section{padding:42px 0}}
+    @media(max-width:760px){.explore-tools{grid-template-columns:1fr}nav{display:none}.hero{grid-template-columns:1fr;padding:65px 0 35px;gap:15px}.visual{min-height:330px}.features,.people{grid-template-columns:1fr}.f1{left:0}.f2{right:0}h1{font-size:3.5rem}.section{padding:42px 0}}
   </style>
 </head>
 <body>
@@ -63,14 +63,37 @@
     </section>
     <section class="section wrap" id="discover">
       <div class="section-head"><h2>A world waiting to be discovered</h2><p>Example community profiles — a preview of how language interests could appear.</p></div>
-      <div class="people">
-        <article class="person"><div class="avatar">🌸</div><h3>Hana</h3><p>Japan · Learning English</p><span class="tag">Japanese</span><span class="tag">Anime</span></article>
-        <article class="person"><div class="avatar">🌊</div><h3>Alex</h3><p>Canada · Learning Spanish</p><span class="tag">English</span><span class="tag">Travel</span></article>
-        <article class="person"><div class="avatar">🌻</div><h3>Meera</h3><p>India · Learning Japanese</p><span class="tag">Hindi</span><span class="tag">Japanese</span></article>
+      <div class="explore-tools"><input id="profileSearch" type="search" placeholder="Search by name or country..." aria-label="Search example profiles"><select id="languageFilter" aria-label="Filter by language"><option value="all">All languages</option><option value="japanese">Japanese</option><option value="english">English</option><option value="spanish">Spanish</option><option value="hindi">Hindi</option></select></div>
+      <div class="people" id="peopleList">
+        <article class="person" data-search="hana japan japanese anime english"><div class="avatar">🌸</div><h3>Hana</h3><p>Japan · Learning English</p><span class="tag">Japanese</span><span class="tag">Anime</span></article>
+        <article class="person" data-search="alex canada english spanish travel"><div class="avatar">🌊</div><h3>Alex</h3><p>Canada · Learning Spanish</p><span class="tag">English</span><span class="tag">Travel</span></article>
+        <article class="person" data-search="meera india hindi japanese"><div class="avatar">🌻</div><h3>Meera</h3><p>India · Learning Japanese</p><span class="tag">Hindi</span><span class="tag">Japanese</span></article>
       </div>
+      <p class="empty" id="noProfiles">No example profiles match. Try another search.</p>
+      <p class="preview-note">These are fictional preview profiles, not real members.</p>
     </section>
     <section class="wrap safety" id="safety"><strong>🌱 Kindness comes first.</strong> This is an early design preview. Before real accounts or messaging are added, the platform needs strong privacy settings, age-appropriate access, moderation, and easy block/report tools. Never share passwords, home addresses or private contact details with people you meet online.</section>
   </main>
   <footer class="wrap"><span>© 2026 WE CONNECT · Connect Beyond Borders</span><span>Made for curious minds everywhere 🌍</span></footer>
+  <script>
+    const searchBox = document.getElementById("profileSearch");
+    const languageFilter = document.getElementById("languageFilter");
+    const profileCards = [...document.querySelectorAll(".person")];
+    const emptyMessage = document.getElementById("noProfiles");
+    function filterProfiles(){
+      const query = searchBox.value.trim().toLowerCase();
+      const language = languageFilter.value;
+      let visible = 0;
+      profileCards.forEach(card => {
+        const matchesText = card.dataset.search.includes(query);
+        const matchesLanguage = language === "all" || card.dataset.search.includes(language);
+        card.hidden = !(matchesText && matchesLanguage);
+        if(!card.hidden) visible++;
+      });
+      emptyMessage.style.display = visible ? "none" : "block";
+    }
+    searchBox.addEventListener("input", filterProfiles);
+    languageFilter.addEventListener("change", filterProfiles);
+  </script>
 </body>
 </html>
