@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="WE CONNECT — discover languages, cultures and new perspectives around the world.">
+  <title>WE CONNECT — Connect Beyond Borders</title>
+  <style>
+    :root{--bg:#0b0b18;--panel:#15152a;--muted:#aaa9c4;--white:#f8f7ff;--pink:#ff65b5;--purple:#9875ff;--blue:#55c8ff}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 15% 5%,#292052 0,transparent 34%),radial-gradient(ellipse at 90% 18%,#153b5a 0,transparent 32%),var(--bg);color:var(--white);font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,sans-serif}
+    a{color:inherit;text-decoration:none}.wrap{width:min(1120px,calc(100% - 40px));margin:auto}
+    header{height:82px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #ffffff16}
+    .brand{font-size:1.12rem;font-weight:850;letter-spacing:.12em}.brand span{background:linear-gradient(90deg,var(--pink),var(--purple),var(--blue));-webkit-background-clip:text;background-clip:text;color:transparent}
+    nav{display:flex;gap:28px;color:#d0cfe0;font-size:.92rem}nav a:hover{color:white}
+    .btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 19px;border-radius:999px;background:linear-gradient(100deg,var(--pink),var(--purple),#5d9eff);font-weight:750;color:white;box-shadow:0 8px 30px #916cff35;border:0;cursor:pointer}
+    .hero{padding:88px 0 72px;display:grid;grid-template-columns:1.08fr .92fr;align-items:center;gap:48px;min-height:570px}
+    .eyebrow{display:inline-flex;gap:9px;align-items:center;border:1px solid #ffffff24;background:#ffffff0c;padding:8px 13px;border-radius:999px;color:#d9d5ff;font-size:.82rem}
+    .dot{width:8px;height:8px;background:#65e8bb;border-radius:50%;box-shadow:0 0 12px #65e8bb}
+    h1{font-size:clamp(3.1rem,7vw,5.6rem);line-height:.98;letter-spacing:-.065em;margin:24px 0 20px}
+    h1 em{font-style:normal;background:linear-gradient(95deg,#ff79c6,#a58aff 55%,#66d6ff);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .lead{font-size:1.12rem;line-height:1.75;color:#c0bfd4;max-width:560px}.actions{display:flex;gap:14px;align-items:center;margin-top:30px;flex-wrap:wrap}.ghost{padding:12px 18px;border:1px solid #ffffff30;border-radius:999px;color:#e8e6f7;font-weight:650}
+    .note{font-size:.82rem;color:#9998b2;margin-top:20px}
+    .visual{position:relative;min-height:390px;display:grid;place-items:center}
+    .orbit{width:min(360px,78vw);aspect-ratio:1;border-radius:50%;border:1px solid #b9aaff38;background:radial-gradient(circle at 35% 30%,#8c65ff38,transparent 38%),radial-gradient(circle at 70% 70%,#35c7ff28,transparent 38%),#ffffff08;box-shadow:0 0 90px #876bff22,inset 0 0 65px #9c7bff14;display:grid;place-items:center;position:relative}
+    .globe{font-size:9rem;filter:drop-shadow(0 15px 35px #8b7bff66)}
+    .float{position:absolute;padding:12px 15px;border:1px solid #ffffff28;border-radius:16px;background:#17172bd9;backdrop-filter:blur(12px);box-shadow:0 15px 40px #0005;font-size:.9rem}
+    .f1{top:16%;left:-2%}.f2{right:-3%;top:35%}.f3{bottom:12%;left:6%}
+    .section{padding:54px 0 72px}.section-head{text-align:center;max-width:650px;margin:0 auto 30px}.section-head h2{font-size:2.15rem;margin:0 0 12px;letter-spacing:-.04em}.section-head p{color:var(--muted);line-height:1.6}
+    .features{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.card{padding:24px;border-radius:22px;background:linear-gradient(145deg,#ffffff12,#ffffff06);border:1px solid #ffffff17;min-height:180px}.icon{font-size:1.7rem}.card h3{margin:16px 0 8px}.card p{margin:0;color:var(--muted);line-height:1.6;font-size:.94rem}
+    .people{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.person{padding:22px;border-radius:20px;background:#ffffff0b;border:1px solid #ffffff19}.avatar{width:52px;height:52px;border-radius:16px;display:grid;place-items:center;font-size:1.35rem;background:linear-gradient(135deg,#ff70bd,#786eff)}.person h3{margin:14px 0 4px}.person p{color:var(--muted);font-size:.9rem;margin:0 0 14px}.tag{display:inline-block;padding:6px 10px;border-radius:999px;background:#ffffff12;color:#dedaf8;font-size:.78rem;margin:3px 4px 0 0}
+    .safety{margin:10px 0 70px;padding:22px 25px;border:1px solid #7edfc044;background:#62d6b00c;border-radius:18px;color:#d9f7ed;line-height:1.6}.safety strong{color:#8df0cf}
+    footer{border-top:1px solid #ffffff18;padding:25px 0 35px;color:#9291aa;font-size:.85rem;display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap}
+    @media(max-width:760px){nav{display:none}.hero{grid-template-columns:1fr;padding:65px 0 35px;gap:15px}.visual{min-height:330px}.features,.people{grid-template-columns:1fr}.f1{left:0}.f2{right:0}h1{font-size:3.5rem}.section{padding:42px 0}}
+  </style>
+</head>
+<body>
+  <header class="wrap">
+    <a class="brand" href="#"><span>WE</span> CONNECT</a>
+    <nav aria-label="Main navigation"><a href="#why">Why WE CONNECT</a><a href="#discover">Discover</a><a href="#safety">Safety</a></nav>
+    <a class="btn" href="#discover">Explore the world ↗</a>
+  </header>
+  <main>
+    <section class="hero wrap">
+      <div>
+        <div class="eyebrow"><span class="dot"></span> A world of languages & perspectives</div>
+        <h1>One world.<br><em>Many voices.</em></h1>
+        <p class="lead">Discover languages, explore cultures and meet people who see the world differently. Your next meaningful conversation could be across the globe.</p>
+        <div class="actions"><a class="btn" href="#discover">Discover the community →</a><a class="ghost" href="#why">How it works</a></div>
+        <p class="note">A welcoming space to learn, share and grow — beyond borders.</p>
+      </div>
+      <div class="visual" aria-label="Globe illustration">
+        <div class="orbit"><div class="globe">🌐</div></div>
+        <div class="float f1">🇯🇵 Japanese</div><div class="float f2">🌍 Global community</div><div class="float f3">💬 Share a language</div>
+      </div>
+    </section>
+    <section class="section wrap" id="why">
+      <div class="section-head"><h2>Connection has no borders</h2><p>Language learning feels more exciting when it brings cultures and curious minds together.</p></div>
+      <div class="features">
+        <article class="card"><div class="icon">🗣️</div><h3>Learn together</h3><p>Discover languages you want to practise and share the ones you know.</p></article>
+        <article class="card"><div class="icon">🧭</div><h3>Explore cultures</h3><p>Find out about traditions, places, food and everyday life around the world.</p></article>
+        <article class="card"><div class="icon">✨</div><h3>Meet new perspectives</h3><p>Build understanding through kind, respectful and meaningful conversations.</p></article>
+      </div>
+    </section>
+    <section class="section wrap" id="discover">
+      <div class="section-head"><h2>A world waiting to be discovered</h2><p>Example community profiles — a preview of how language interests could appear.</p></div>
+      <div class="people">
+        <article class="person"><div class="avatar">🌸</div><h3>Hana</h3><p>Japan · Learning English</p><span class="tag">Japanese</span><span class="tag">Anime</span></article>
+        <article class="person"><div class="avatar">🌊</div><h3>Alex</h3><p>Canada · Learning Spanish</p><span class="tag">English</span><span class="tag">Travel</span></article>
+        <article class="person"><div class="avatar">🌻</div><h3>Meera</h3><p>India · Learning Japanese</p><span class="tag">Hindi</span><span class="tag">Japanese</span></article>
+      </div>
+    </section>
+    <section class="wrap safety" id="safety"><strong>🌱 Kindness comes first.</strong> This is an early design preview. Before real accounts or messaging are added, the platform needs strong privacy settings, age-appropriate access, moderation, and easy block/report tools. Never share passwords, home addresses or private contact details with people you meet online.</section>
+  </main>
+  <footer class="wrap"><span>© 2026 WE CONNECT · Connect Beyond Borders</span><span>Made for curious minds everywhere 🌍</span></footer>
+</body>
+</html>
